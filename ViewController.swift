@@ -52,12 +52,16 @@ class ViewController: UIViewController {
             
 
             var dashAnimation = CABasicAnimation(keyPath: "lineDashPattern")
-            dashAnimation.fromValue = [NSNumber(int: 12)]
-            dashAnimation.toValue = [NSNumber(int: 24)]
-            dashAnimation.beginTime = 0.5
+            dashAnimation.fromValue = [NSNumber(int: 21)]
+            dashAnimation.toValue = [NSNumber(int: 40)]
+            dashAnimation.beginTime = 0.75
+            
+//            var opacAnimation = CABasicAnimation(keyPath: "opacity")
+//            opacAnimation.fromValue = 1.0
+//            opacAnimation.toValue = 0.3
             
             var group = CAAnimationGroup()
-            group.duration = 1.0
+            group.duration = 0.9
             //group.beginTime = CACurrentMediaTime() + 0.5
             group.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
             group.animations = [pathAnimation, dashAnimation]
@@ -73,9 +77,9 @@ class ViewController: UIViewController {
         let layerQueue = dispatch_queue_create("layerQueue", nil)
         dispatch_async(layerQueue) {
             
-            NSThread.sleepForTimeInterval(0.9)
+            NSThread.sleepForTimeInterval(0.8)
             dispatch_async(dispatch_get_main_queue()) {
-                self.view.layer.sublayers.removeAtIndex(2)
+                self.view.layer.sublayers.removeAtIndex(3)
 
             }
         }
